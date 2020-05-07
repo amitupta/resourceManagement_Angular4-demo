@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 5px;
+}
+th {
+  text-align: left;
+}
+
+</style>
+</head>
+<body>
+  <a href="home" class="btn btn-primary">Home</a>
+  <a href="login" class="btn btn-primary">Logout</a>
+<h2>Resource Records</h2>
+<p></p>
+
+<table style="width:100%">
+  <tr>
+    <th>Emp Id</th>
+    <th>Firstname</th>
+    <th>LastName</th> 
+    <th>Mobile no.</th>
+    <th>Email</th> 
+    <th>Grade</th>
+    <th>Project</th>
+    <th>Project Start Date</th>
+    <th>Project End Date</th>
+    <th>Project Technologies</th>
+    <th>Rolled Off</th>
+    <th>Edit</th>
+  </tr>
+   
+    <tr *ngFor = "let data of httpdata">
+      <td >{{data.empId}}</td>
+      <td *ngIf="data.rolledOff==false" [style.color]="'green'"  style="text-transform: uppercase;">{{data.firstName}}</td>
+      <td *ngIf="data.rolledOff==true" [style.color]="'red'"  style="text-transform: uppercase;">{{data.firstName}}</td>
+      <td *ngIf="data.rolledOff==false"[style.color]="'green'"  style="text-transform: uppercase;">{{data.lastName}}</td>
+      <td *ngIf="data.rolledOff==true"[style.color]="'red'"  style="text-transform: uppercase;">{{data.lastName}}</td>
+      <td>{{data.mobile}}</td>
+      <td>{{data.email}}</td>
+      <td  style="text-transform: uppercase;">{{data.grade}}</td>
+      <td>{{data.projectList[0].projectName}}</td>
+      <td>{{data.projectList[0].startDate}}</td>
+      <td>{{data.projectList[0].endDate}}</td>
+      <td>{{data.projectList[0].technologies}}</td>
+      <td *ngIf="data.rolledOff==false" [style.color]="'green'"  style="text-transform: uppercase;">   {{data.rolledOff}}</td> 
+      <td *ngIf="data.rolledOff==true" [style.color]="'red'"  style="text-transform: uppercase;">   {{data.rolledOff}}</td>
+       
+          <td><a href="getResourceById?id={{data.empId}}" class="btn btn-primary">Edit</a></td>
+    </tr>
+
+  
+</table>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
